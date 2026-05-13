@@ -1,0 +1,14 @@
+[env]
+_.path = './node_modules/.bin'
+PROMPTFOO_CONFIG_DIR="{{ cwd }}/.promptfoo/"
+PROMPTFOO_CACHE_PATH="{{ cwd }}/.promptfoo/cache/"
+PROMPTFOO_LOG_DIR="{{ cwd }}/.promptfoo/logs/"
+
+[tools]
+node = "22"
+pnpm = "11.1"
+
+[tasks.eval]
+description = "Run promptfoo eval with local OpenCode config (reads config/opencode/AGENTS.md)"
+env = { XDG_CONFIG_HOME = "{{config_root}}/config" }
+run = "promptfoo eval --no-cache"

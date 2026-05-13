@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+description: "Hello World - minimal test"
+providers:
+  - id: opencode:sdk
+    label: "OpenCode SDK (minimax-m2.5)"
+    config:
+      provider_id: opencode-go
+      model: minimax-m2.5
+      apiKey: "{{env.OPENCODE_API_KEY}}"
+
+  - id: opencode:sdk
+    label: "OpenCode SDK (deepseek-v4-flash)"
+    config:
+      provider_id: opencode-go
+      model: deepseek-v4-flash
+      apiKey: "{{env.OPENCODE_API_KEY}}"
+
+prompts:
+  - "Translate the following English text to {{language}} using proper spelling, punctuation, and diacritics: {{input}}"
+
+tests:
+  - vars:
+      language: French
+      input: Hello world
+    assert:
+      - type: contains-all
+        value:
+          - "Bonjour"
+          - "monde"
+
+  - vars:
+      language: Spanish
+      input: Where is the library?
+    assert:
+      - type: contains-any
+        value:
+          - "Dónde está la biblioteca"

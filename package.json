@@ -21,6 +21,6 @@
     "promptfoo": "0.121.11"
   },
   "dependencies": {
-    "@opencode-ai/sdk": "^1.14.46"
+    "@opencode-ai/sdk": "^1.15.5"
   }
 }

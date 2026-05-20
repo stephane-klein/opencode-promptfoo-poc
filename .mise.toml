@@ -12,3 +12,8 @@ pnpm = "11.1"
 description = "Run promptfoo eval with local OpenCode config (reads config/opencode/AGENTS.md)"
 env = { XDG_CONFIG_HOME = "{{config_root}}/config" }
 run = "promptfoo eval --no-cache"
+
+[tasks.view]
+description = "Start promptfoo viewer"
+env = { XDG_CONFIG_HOME = "{{config_root}}/config" }
+run = "promptfoo view"

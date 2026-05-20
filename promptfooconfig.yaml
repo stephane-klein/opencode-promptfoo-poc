@@ -2,21 +2,55 @@
 description: "Hello World - minimal test"
 providers:
   - id: opencode:sdk
-    label: "OpenCode SDK (minimax-m2.5)"
+    label: "minimax-m2.5"
     config:
       provider_id: opencode-go
       model: minimax-m2.5
       apiKey: "{{env.OPENCODE_API_KEY}}"
+      working_dir: ./workdir1/
 
   - id: opencode:sdk
-    label: "OpenCode SDK (deepseek-v4-flash)"
+    label: "minimax-m2.7"
+    config:
+      provider_id: opencode-go
+      model: minimax-m2.7
+      apiKey: "{{env.OPENCODE_API_KEY}}"
+      working_dir: ./workdir1/
+
+  - id: opencode:sdk
+    label: "deepseek-v4-flash"
     config:
       provider_id: opencode-go
       model: deepseek-v4-flash
       apiKey: "{{env.OPENCODE_API_KEY}}"
+      working_dir: ./workdir1/
+
+  - id: opencode:sdk
+    label: "minimax-m2.5 with Agents.md"
+    config:
+      provider_id: opencode-go
+      model: minimax-m2.5
+      apiKey: "{{env.OPENCODE_API_KEY}}"
+      working_dir: ./workdir2/
+
+  - id: opencode:sdk
+    label: "minimax-m2.7 with Agents.md"
+    config:
+      provider_id: opencode-go
+      model: minimax-m2.7
+      apiKey: "{{env.OPENCODE_API_KEY}}"
+      working_dir: ./workdir2/
+
+  - id: opencode:sdk
+    label: "deepseek-v4-flash with Agents.md"
+    config:
+      provider_id: opencode-go
+      model: deepseek-v4-flash
+      apiKey: "{{env.OPENCODE_API_KEY}}"
+      working_dir: ./workdir2/
 
 prompts:
-  - "Translate the following English text to {{language}} using proper spelling, punctuation, and diacritics: {{input}}"
+  - "Translate the following English text to {{language}}: {{input}}"
 
 tests:
   - vars:
@@ -34,4 +68,4 @@ tests:
     assert:
       - type: contains-any
         value:
-          - "Dónde está la biblioteca"
+          - "Donde esta la biblioteca"

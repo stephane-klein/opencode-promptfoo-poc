@@ -2,7 +2,7 @@
 description: "Hello World - minimal test"
 providers:
   - id: opencode:sdk
-    label: "minimax-m2.5"
+    label: "without-agent-minimax-m2.5"
     config:
       provider_id: opencode-go
       model: minimax-m2.5
@@ -10,7 +10,7 @@ providers:
       working_dir: ./workdir1/
 
   - id: opencode:sdk
-    label: "minimax-m2.7"
+    label: "without-agent-minimax-m2.7"
     config:
       provider_id: opencode-go
       model: minimax-m2.7
@@ -18,7 +18,7 @@ providers:
       working_dir: ./workdir1/
 
   - id: opencode:sdk
-    label: "deepseek-v4-flash"
+    label: "without-agent-deepseek-v4-flash"
     config:
       provider_id: opencode-go
       model: deepseek-v4-flash
@@ -26,7 +26,7 @@ providers:
       working_dir: ./workdir1/
 
   - id: opencode:sdk
-    label: "minimax-m2.5 with Agents.md"
+    label: "with-agent-minimax-m2.5"
     config:
       provider_id: opencode-go
       model: minimax-m2.5
@@ -34,7 +34,7 @@ providers:
       working_dir: ./workdir2/
 
   - id: opencode:sdk
-    label: "minimax-m2.7 with Agents.md"
+    label: "with-agent-minimax-m2.7"
     config:
       provider_id: opencode-go
       model: minimax-m2.7
@@ -42,7 +42,7 @@ providers:
       working_dir: ./workdir2/
 
   - id: opencode:sdk
-    label: "deepseek-v4-flash with Agents.md"
+    label: "with-agent-deepseek-v4-flash"
     config:
       provider_id: opencode-go
       model: deepseek-v4-flash
@@ -69,3 +69,15 @@ tests:
       - type: contains-any
         value:
           - "Donde esta la biblioteca"
+    providers:
+      - "with-agent*"
+
+  - vars:
+      language: Spanish
+      input: Where is the library?
+    assert:
+      - type: not-contains-any
+        value:
+          - "Donde esta la biblioteca"
+    providers:
+      - "without-agent*"
